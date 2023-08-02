@@ -1,0 +1,15 @@
+{
+  "name": "desafio-1",
+  "version": "1.0.0",
+  "description": "Desafio 1 do Processo de Formação da ModalGR, o desafio consiste em um sistema de autenticação para avaliar os conhecimentos adquiridos na trilha 01.",
+  "main": "desafio1.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Neemias Vieira",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.0"
+  }
+}

@@ -1,30 +1,6 @@
-//Lista de usuários cadastrados na memória (para usar como exemplo);
-const usuarios = [
-  {
-    username: "neemiasv@modalgr.com.br",
-    password: "123456",
-  },
-  {
-    username: "diogo@modalgr.com.br",
-    password: "abcdef",
-  },
-  {
-    username: "ellen@modalgr.com.br",
-    password: "abcdef",
-  },
-  {
-    username: "murilo@modalgr.com.br",
-    password: "abcdef",
-  },
-  {
-    username: "isaac@modalgr.com.br",
-    password: "abcdef",
-  },
-  {
-    username: "danilo@modalgr.com.br",
-    password: "abcdef",
-  },
-];
+import usuarios from "../repositorios/usuarios.js"
+import { hash, compare } from "bcrypt";
+
 
 const logar = (username, password) => { //Função responsável pelo Login do usuário
 
@@ -37,10 +13,10 @@ const logar = (username, password) => { //Função responsável pelo Login do us
 
   if (usernameExists) { //Se o usuário existir, a senha é verificada, retornando true ou false.
     usuarios[usernameExists].password === password ? console.log(`Usuário ${username} logado com sucesso!`) : console.log("Usuário ou senha incorretos! Tente novamente.");
-    return usuarios[usernameExists].password === password ? true : false
+    return usuarios[usernameExists].password === password ? true : false //Só a condição já retorna true ou false
   } 
   console.log("Usuário ou senha incorretos! Tente novamente."); //Caso o usuário não exista
-  return false;
+  return false; // Pode ser movida a linha 12
 };
 
 const cadastrar = (username, password) => { //Função responsável por cadastrar novos usuários
@@ -65,16 +41,15 @@ const cadastrar = (username, password) => { //Função responsável por cadastra
     return false;
   }
   
-  if (!username.includes("@modalgr.com.br")){ //Tratamento de e-mail não corporativo
+  if (!username.includes("@modalgr.com.br")){ //Tratamento de e-mail não corporativo //@modalgr.com.br@outlook.com
     console.log("O e-mail de cadastro precisa ser da ModalGR")
     return false;
   }
-
+  
   let user = usuarios.find((user) => { //Verifica se já existe um usuário com o mesmo e-mail da tentativa de cadastro
     return user.username === username;
   });
-
-
+  
   if (!user) { //Caso não exista um usuário com o mesmo nome, o usuário é cadastrado em memória
     usuarios.push({
       username,
@@ -86,7 +61,18 @@ const cadastrar = (username, password) => { //Função responsável por cadastra
 };
 
 
-logar("ellen@modalgr.com.br", "abcdef");
-cadastrar("Teste@modalgr.com.br", "Jeremias@345")
-cadastrar("ellen@modalgr.com.br", "Jeremias@345");
+const criptografar = async (password) => await hash(password, Number(process.env.PASSWORD_SALT))  
+
+
+
+
+
+
+// logar("ellen@modalgr.com.br", "abcdef");
+// cadastrar("Teste@modalgr.com.br", "Jeremias@345")
+// cadastrar("ellen@modalgr.com.br", "Jeremias@345");
+cadastrar("jere@modalgr.com.br", criptografar("Balao1234_@"))
+
+const senhaCripto = criptografar(senha)
+console.log(usuarios)
 
