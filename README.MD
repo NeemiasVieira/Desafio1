@@ -27,6 +27,7 @@ Features adicionais:
 
 * [express](https://www.npmjs.com/package/express) - Faz o papel de servidor.
 * [bcrypt](https://www.npmjs.com/package/bcrypt) - Utilizado para criptografia de senhas.
+* [vercel](https://www.npmjs.com/package/vercel) - Utilizado para deploy da aplicação.
 
 <strong>Dependências de desenvolvimento:</strong>
 
@@ -42,18 +43,18 @@ Este projeto está sob a licença MIT.
 <strong>Todas as rotas</strong>
 
 Função: Listar usuários cadastrados.<br>
-Rota: http://localhost:3333/usuarios<br>
+Rota: https://desafio1-neemiasvieira.vercel.app/usuarios<br>
 Tipo de requisição: GET<br>
 Retorna todos os usuários cadastrados em ordem alfabética.<br>
 <br>
 Função: Cadastrar usuário.<br>
-Rota: http://localhost:3333/cadastro<br>
+Rota: https://desafio1-neemiasvieira.vercel.app/cadastro<br>
 Tipo de requisição: POST<br>
 Aguarda no corpo da requisição um objeto JSON contendo valores para as propiedades: email e senha.<br>
 retorna um objeto JSON contendo: A mensagem enviada de volta pelo sistema.<br>
 <br>
 Função: Fazer login.<br>
-Rota: http://localhost:3333/login<br>
+Rota: https://desafio1-neemiasvieira.vercel.app/login<br>
 Tipo de requisição: POST<br>
 Aguarda no corpo da requisição um objeto JSON contendo valores para as propiedades: email, senha.<br>
 retorna um objeto JSON contendo: A mensagem enviada de volta pelo sistema.<br>

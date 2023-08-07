@@ -2,7 +2,7 @@
   "name": "desafio-1",
   "version": "1.0.0",
   "description": "Desafio 1 do Processo de Formação da ModalGR, o desafio consiste em um sistema de autenticação para avaliar os conhecimentos adquiridos na trilha 01.",
-  "main": "desafio1.js",
+  "main": "src/aplicacao/servidor.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "vercel": "^31.2.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
