@@ -41,8 +41,9 @@ const cadastro = async (email, senha) => {
   });
 
   //Caso já exista um usuário com o esse e-mail, uma mensagem é exibida.
-  if (usuarioExiste)
+  if (usuarioExiste){
     throw new ErroApp(400, `O nome de usuario: ${email} já está cadastrado no sistema.`);
+  }
 
   //Tratamento de e-mail não corporativo
   if (!email.endsWith("@modalgr.com.br")) {
