@@ -35,7 +35,7 @@ Features adicionais:
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT.
+Este projeto está sob a licença MIT, confira em [LICENSE.md](https://github.com/NeemiasVieira/Desafio1/blob/main/LICENSE) para maiores detalhes.
 
 ## ⚙️ Rotas da API.
 
