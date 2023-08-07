@@ -25,7 +25,6 @@ Features adicionais:
 
 <strong>Dependências:</strong>
 
-* 
 * [express](https://www.npmjs.com/package/express) - Faz o papel de servidor.
 * [bcrypt](https://www.npmjs.com/package/bcrypt) - Utilizado para criptografia de senhas.
 
@@ -57,6 +56,5 @@ Função: Fazer login.<br>
 Rota: http://localhost:3333/login<br>
 Tipo de requisição: POST<br>
 Aguarda no corpo da requisição um objeto JSON contendo valores para as propiedades: email, senha.<br>
-<br>
 retorna um objeto JSON contendo: A mensagem enviada de volta pelo sistema.<br>
 <br>
