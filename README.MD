@@ -76,6 +76,7 @@ retorna um objeto JSON contendo: A mensagem enviada de volta pelo sistema.<br>
 <br>
 <strong>Rotas de Logs (Relatório de tentativa de login)</strong>
 <br>
+<br>
 Função: Listar relatório<br>
 Rota: https://desafio1-neemiasvieira.vercel.app/logs<br>
 Tipo de requisição: GET<br>
