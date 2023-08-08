@@ -1,6 +1,6 @@
 import express from "express";
 import rotas from "./rotas.js";
-// import { ErrosComuns } from "../intermediarios/errosAssincronos.js";
+import { ErrosComuns } from "../intermediarios/errosAssincronos.js";
 import prisma from "../repositorios/prisma/clientePrisma.js";
 
 async function testaConexao() {
@@ -17,7 +17,7 @@ async function testaConexao() {
 const app = express();
 app.use(express.json());
 app.use(rotas);
-// app.use(ErrosComuns);
+app.use(ErrosComuns);
 testaConexao();
 
 
