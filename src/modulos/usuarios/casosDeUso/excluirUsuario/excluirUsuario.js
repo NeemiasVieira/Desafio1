@@ -16,11 +16,6 @@ const excluirUsuario = async (id) => {
 
   //Desconexão com o banco de dados
   await prisma.$disconnect();
-
-  //Resposta da requisição é retornada
-  return {
-    resposta: `${usuario.email} foi excluido com sucesso!`,
-  };
 };
 
 export default excluirUsuario;

@@ -19,13 +19,13 @@ export const errosAssincronos = (manipular) => {
 };
 
 //Trata os erros esperados e inesperados
- export const ErrosComuns = (erro, requisicao, resposta, next) => {
-    if (erro instanceof ErroApp) {
-      return resposta.status(erro.codigo).json({ mensagem: erro.mensagem });
-    }
-
-    return resposta.status(500).json({
-      status: "Erro",
-      mensagem: "Erro interno do servidor =("
-    });
+export const ErrosComuns = (erro, requisicao, resposta, next) => {
+  if (erro instanceof ErroApp) {
+    return resposta.status(erro.codigo).json({ mensagem: erro.mensagem });
   }
+
+  return resposta.status(500).json({
+    status: "Erro",
+    mensagem: "Erro interno do servidor =(",
+  });
+};

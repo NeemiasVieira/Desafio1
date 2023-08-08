@@ -2,8 +2,8 @@ import excluirUsuario from "./excluirUsuario.js";
 
 const excluirUsuarioControlador = async (requisicao, resposta) => {
   const id = requisicao.params.id;
-  const respostaDaExclusao = await excluirUsuario(id);
-  resposta.json(respostaDaExclusao).status(204);
+  await excluirUsuario(id);
+  resposta.status(204).send();
 };
 
 export default excluirUsuarioControlador;

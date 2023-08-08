@@ -9,31 +9,32 @@ import listarLogsControlador from "../modulos/log/casosDeUso/listarLogs/listarLo
 
 const rotas = Router();
 
-//Rota de listagem de usuários
+//Rota de listagem de usuários.
 rotas.get("/usuarios", errosAssincronos(async (requisicao, resposta) => {
   await listaUsuariosControlador(requisicao, resposta);
 }));
 
-//Rota de cadastramento de novos usuários
+//Rota de cadastramento de novos usuários.
 rotas.post("/cadastro", errosAssincronos(async (requisicao, resposta) => {
   await cadastroControlador(requisicao, resposta);
 }));
 
-//Rota de login para usuários já cadastrados
+//Rota de login para usuários já cadastrados.
 rotas.post("/login", errosAssincronos(async (requisicao, resposta) => {
   await loginControlador(requisicao, resposta);
 }));
 
-//Rota de exclusão de usuários
+//Rota de exclusão de usuários.
 rotas.delete("/excluir/:id", errosAssincronos(async (requisicao, resposta) => {
   await excluirUsuarioControlador(requisicao, resposta);
 }));
 
-//Rota de exclusão do relatório de log de logins
+//Rota de exclusão do relatório de log de logins.
 rotas.delete("/excluirlogs", errosAssincronos(async (requisicao, resposta) => {
   await excluirLogsControlador(requisicao, resposta);
 }));
 
+//Rota de listagem de todos os itens contidos relatório.
 rotas.get("/logs", errosAssincronos(async (requisicao, resposta) => {
   listarLogsControlador(requisicao, resposta);
 }));

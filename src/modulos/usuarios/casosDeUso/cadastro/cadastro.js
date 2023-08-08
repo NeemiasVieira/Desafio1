@@ -44,11 +44,12 @@ const cadastro = async (email, senha) => {
 
   //Tratamento de senha não segura
   if (!senhaEstaSegura) {
-    let mensagem = "A senha precisa conter pelo menos um caractere especial, uma letra maiuscula, 8 caracteres e um número, tente novamente.";
-    throw new ErroApp(400, mensagem);
+    throw new ErroApp(400, "A senha precisa conter pelo menos um caractere especial, uma letra maiuscula, 8 caracteres e um número, tente novamente.");
   }
 
   let dataDeCriacao = new Date();
+
+  //Criptografa a senha do usuário
   let senhaCriptografada = await criptografar(senha);
 
   // Caso o cadastro atenda todas as condições, o usuário é cadastrado em memória
@@ -60,7 +61,7 @@ const cadastro = async (email, senha) => {
 
   await prisma.$disconnect();
   
-  return {respota: `Usuário ${email} cadastrado com sucesso!`, usuario};
+  return {resposta: `Usuário ${email} cadastrado com sucesso!`, usuario};
 };
 
 export default cadastro;
