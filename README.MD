@@ -49,7 +49,7 @@ Este projeto está sob a licença MIT.
 
 ## ⚙️ Rotas da API.
 
-<strong>Rotas de usuários</strong>
+<strong>Rotas de Usuários</strong>
 
 Função: Listar usuários cadastrados.<br>
 Rota: https://desafio1-neemiasvieira.vercel.app/usuarios<br>
@@ -74,8 +74,8 @@ Tipo de requisição: DELETE<br>
 Aguarda no parâmetro da requisição um id de usuário válido<br>
 retorna um objeto JSON contendo: A mensagem enviada de volta pelo sistema.<br>
 <br>
-<br>
 <strong>Rotas de Logs (Relatório de tentativa de login)</strong>
+<br>
 Função: Listar relatório<br>
 Rota: https://desafio1-neemiasvieira.vercel.app/logs<br>
 Tipo de requisição: GET<br>
