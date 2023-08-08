@@ -51,8 +51,8 @@ const cadastro = async (email, senha) => {
   let dataDeCriacao = new Date();
   let senhaCriptografada = await criptografar(senha);
 
-  //Caso o cadastro atenda todas as condições, o usuário é cadastrado em memória
-  await prisma.usuarios.create({data: {
+  // Caso o cadastro atenda todas as condições, o usuário é cadastrado em memória
+  let usuario = await prisma.usuarios.create({data: {
     email,
     senha: senhaCriptografada,
     dataDeCriacao,
@@ -60,7 +60,7 @@ const cadastro = async (email, senha) => {
 
   await prisma.$disconnect();
   
-  return `Usuário ${email} cadastrado com sucesso!`;
+  return {respota: `Usuário ${email} cadastrado com sucesso!`, usuario};
 };
 
 export default cadastro;

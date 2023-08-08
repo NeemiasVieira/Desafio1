@@ -10,6 +10,14 @@ datasource db {
 model usuarios {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   email       String   @unique(map: "encontrarEmail")
-  senha         String
+  senha       String
   dataDeCriacao DateTime
+}
+
+model log {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String   @unique(map: "encontrarEmail")
+  sucesso        Boolean
+  dataDaTentativa DateTime
+
 }
