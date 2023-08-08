@@ -7,9 +7,9 @@ import loginControlador from "../modulos/usuarios/casosDeUso/login/loginControla
 const rotas = Router();
 
 //Rota de listagem de usuários
-rotas.get("/usuarios", (requisicao, resposta) => {
-  listaUsuariosControlador(requisicao, resposta);
-});
+rotas.get("/usuarios", errosAssincronos(async (requisicao, resposta) => {
+  await listaUsuariosControlador(requisicao, resposta);
+}));
 
 //Rota de cadastramento de novos usuários
 rotas.post("/cadastro", errosAssincronos(async (requisicao, resposta) => {

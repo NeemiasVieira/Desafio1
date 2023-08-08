@@ -11,11 +11,16 @@
   "author": "Neemias Vieira",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "^5.1.1",
     "bcrypt": "^5.1.0",
     "express": "^4.18.2",
     "vercel": "^31.2.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "prisma": "^5.1.1"
+  },
+  "prisma": {
+    "schema": "src/repositorios/prisma/schema.prisma"
   }
 }

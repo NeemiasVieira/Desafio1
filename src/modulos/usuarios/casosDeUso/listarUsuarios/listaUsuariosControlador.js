@@ -1,8 +1,8 @@
-import usuarios from "../../../../repositorios/usuarios.js"
-import listaUsuarios from "./listaUsuarios.js";
+import listaUsuarios from "./listaUsuarios.js"
 
-const listaUsuariosControlador = (requisicao, resposta) => {
-    resposta.status(200).send(listaUsuarios(usuarios));
+const listaUsuariosControlador = async (requisicao, resposta) => {
+    const usuarios = await listaUsuarios();
+    await resposta.status(200).json(usuarios);
 }
 
 export default listaUsuariosControlador;

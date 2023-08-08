@@ -1,5 +1,5 @@
 import { ErroApp } from "../../../../intermediarios/errosAssincronos.js";
-import usuarios from "../../../../repositorios/usuarios.js";
+import prisma from "../../../../repositorios/prisma/clientePrisma.js";
 import { hash } from "bcrypt";
 
 //Função que verifica se a senha do cadastro é segura
@@ -17,28 +17,17 @@ const senhaSegura = (senha) => {
   return true; //Caso não entre em nenhuma condição de falha de segurança retorna true
 };
 
-//Função que formata a date nativa do JavaScript para nomenclatura brasileira
-const formatarDataHora = (data) => {
-    const dia = String(data.getDate()).padStart(2, '0');
-    const mes = String(data.getMonth() + 1).padStart(2, '0');
-    const ano = String(data.getFullYear());
-    const horas = String(data.getHours()).padStart(2, '0');
-    const minutos = String(data.getMinutes()).padStart(2, '0');
-    const segundos = String(data.getSeconds()).padStart(2, '0');
-
-    return `${dia}/${mes}/${ano} | ${horas}:${minutos}:${segundos}`;
-}
-
 //Função responsável pela criptografia de senha
 const criptografar = (password) => hash(password, Number(process.env.PASSWORD_SALT));  
 
 const cadastro = async (email, senha) => {
   email = email.toLowerCase();
 
+  //Estabele a conexão com o banco de dados
+  await prisma.$connect()
+
   //Verifica se já existe um usuário com o mesmo e-mail da tentativa de cadastro
-  let usuarioExiste = usuarios.find((usuarioExiste) => {
-    return usuarioExiste.email === email;
-  });
+  let usuarioExiste = await prisma.usuarios.findUnique({where: {email}});
 
   //Caso já exista um usuário com o esse e-mail, uma mensagem é exibida.
   if (usuarioExiste){
@@ -59,11 +48,18 @@ const cadastro = async (email, senha) => {
     throw new ErroApp(400, mensagem);
   }
 
-  let dataDeCriacao = formatarDataHora(new Date());
+  let dataDeCriacao = new Date();
   let senhaCriptografada = await criptografar(senha);
 
   //Caso o cadastro atenda todas as condições, o usuário é cadastrado em memória
-  usuarios.push({ email, senha: senhaCriptografada, dataDeCriacao });
+  await prisma.usuarios.create({data: {
+    email,
+    senha: senhaCriptografada,
+    dataDeCriacao,
+  }})
+
+  await prisma.$disconnect();
+  
   return `Usuário ${email} cadastrado com sucesso!`;
 };
 

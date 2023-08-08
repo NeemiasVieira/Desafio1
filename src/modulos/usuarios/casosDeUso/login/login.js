@@ -1,33 +1,29 @@
-import usuarios from "../../../../repositorios/usuarios.js";
 import { ErroApp } from "../../../../intermediarios/errosAssincronos.js";
 import { compare } from "bcrypt";
-
+import prisma from "../../../../repositorios/prisma/clientePrisma.js";
 
 const login = async (email, senha) => {
- 
   email = email.toLowerCase();
+  await prisma.$connect();
 
-  //Verifica se existe um usuário com o mesmo nome
-  let index = usuarios.findIndex((usuario, index) => {
-    return usuario.email === email ? index : false;
-  });
-
-  //Verifica se o usuário existe ou não baseado no retorno do index encontrado;
-  let UsuarioNaoExiste = (index === -1 ? true : false);
+  let usuarioExiste = await prisma.usuarios.findUnique({ where: { email } });
 
   // Caso o usuário não exista
-  if (UsuarioNaoExiste) {
+  if (!usuarioExiste) {
     throw new ErroApp(401, "Usuário ou senha incorretos! Tente novamente.");
   }
 
-  let senhaEmBanco = usuarios[index].senha;
+  //Verifica a senha do usuário
+  let senhaEmBanco = usuarioExiste.senha;
   let senhaIncorreta = await compare(senha, senhaEmBanco);
   senhaIncorreta = !senhaIncorreta;
-  
-  //Verifica a senha do usuário
+
+  //Tratamento de senha incorreta
   if (senhaIncorreta) {
     throw new ErroApp(401, "Usuário ou senha incorretos! Tente novamente.");
   }
+
+  //Caso de sucesso do login
   return `Usuário ${email} logado com sucesso!`;
 };
 
