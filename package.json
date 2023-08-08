@@ -1,6 +1,6 @@
 {
   "name": "desafio-1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Desafio 1 do Processo de Formação da ModalGR, o desafio consiste em um sistema de autenticação para avaliar os conhecimentos adquiridos na trilha 01.",
   "main": "src/aplicacao/servidor.js",
   "type": "module",
