@@ -9,6 +9,11 @@ import listarLogsControlador from "../modulos/log/casosDeUso/listarLogs/listarLo
 
 const rotas = Router();
 
+//Rota padrão do dominio 
+rotas.get("/" , (requisicao, resposta) => {
+  resposta.send("✅ Desafio 1 realizado com sucesso! 🥳 - Confira a documentação para mais detalhes ")
+})
+
 //Rota de listagem de usuários.
 rotas.get("/usuarios", errosAssincronos(async (requisicao, resposta) => {
   await listaUsuariosControlador(requisicao, resposta);
